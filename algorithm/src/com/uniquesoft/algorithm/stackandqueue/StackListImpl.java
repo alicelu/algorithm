@@ -1,13 +1,13 @@
 /**
  * 
  */
-package com.uniquesoft.algorithm;
+package com.uniquesoft.algorithm.stackandqueue;
 
 /**
  * @author alicelu
  *
  */
-public class StackImpl<E> {
+public class StackListImpl<E> {
 
     private class Node<E> {
         E value;
