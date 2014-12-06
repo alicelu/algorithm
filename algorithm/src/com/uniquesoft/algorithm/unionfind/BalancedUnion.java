@@ -7,33 +7,40 @@ package com.uniquesoft.algorithm.unionfind;
  * @author lusha
  * 
  */
-public class QuickUnion {
-
+public class BalancedUnion {
     private int id[];
+    private int count[];
 
-    public QuickUnion(int size) {
+    public BalancedUnion(int size) {
         id = new int[size];
+        count = new int[size];
         for (int i = 0; i < size; i++) {
             id[i] = i;
+            count[i] = 0;
         }
     }
 
-    /**
-     * Recursively get root of i
-     */
     private int root(int i) {
         while (id[i] != i) {
+            // Improvement
+            id[i] = id[id[i]];
+
             i = id[i];
         }
         return i;
     }
 
-    /**
-     * Set q's root's root as p's root
-     */
     public void union(int p, int q) {
+        int proot = root(p);
         int qroot = root(q);
-        id[qroot] = root(p);
+
+        if (count[proot] > count[qroot]) {
+            id[qroot] = proot;
+            count[proot] += count[qroot];
+        } else {
+            id[proot] = qroot;
+            count[qroot] += count[proot];
+        }
     }
 
     public boolean connected(int p, int q) {

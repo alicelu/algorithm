@@ -8,24 +8,26 @@ package com.uniquesoft.algorithm.unionfind;
  * 
  */
 public class QuickFind {
-    private int[] a;
+    private int[] id;
 
     public QuickFind(int size) {
-        a = new int[size];
+        id = new int[size];
         for (int i = 0; i < size; i++) {
-            a[i] = i;
+            id[i] = i;
         }
     }
 
     public void union(int p, int q) {
-        for (int i = 0; i < a.length; i++) {
-            if (a[i] == a[p]) {
-                a[i] = a[q];
+        int pid = id[p];
+        int qid = id[q];
+        for (int i = 0; i < id.length; i++) {
+            if (id[i] == pid) {
+                id[i] = qid;
             }
         }
     }
 
     public boolean connected(int p, int q) {
-        return a[p] == a[q];
+        return id[p] == id[q];
     }
 }
