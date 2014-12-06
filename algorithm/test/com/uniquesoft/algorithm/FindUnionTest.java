@@ -38,7 +38,7 @@ public class FindUnionTest {
         assertEquals(false, qu.connected(3, 5));
         assertEquals(true, qu.connected(1, 4));
     }
-    
+
     @Test
     public void testBalancedUnion() {
         BalancedUnion bu = new BalancedUnion(10);

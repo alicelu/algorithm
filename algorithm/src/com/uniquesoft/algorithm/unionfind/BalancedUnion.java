@@ -16,13 +16,13 @@ public class BalancedUnion {
         count = new int[size];
         for (int i = 0; i < size; i++) {
             id[i] = i;
-            count[i] = 0;
+            count[i] = 1;
         }
     }
 
     private int root(int i) {
         while (id[i] != i) {
-            // Improvement
+            // Improvement to keep the tree flat
             id[i] = id[id[i]];
 
             i = id[i];
