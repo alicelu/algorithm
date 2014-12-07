@@ -20,6 +20,10 @@ public class StackListImpl<E> {
     }
 
     private Node<E> top;
+    
+    public boolean isEmpty() {
+        return top == null;
+    }
 
     public void push(E value) {
         Node<E> newNode = new Node<E>(value);

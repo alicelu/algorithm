@@ -22,7 +22,7 @@ public class BalancedUnion {
 
     private int root(int i) {
         while (id[i] != i) {
-            // Improvement to keep the tree flat
+            // TODO Note: Improvement to keep the tree flat
             id[i] = id[id[i]];
 
             i = id[i];

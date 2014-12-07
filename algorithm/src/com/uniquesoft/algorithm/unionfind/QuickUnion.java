@@ -22,6 +22,7 @@ public class QuickUnion {
      * Recursively get root of i
      */
     private int root(int i) {
+        // TODO Note: for the while loop
         while (id[i] != i) {
             i = id[i];
         }
@@ -32,6 +33,7 @@ public class QuickUnion {
      * Set q's root's root as p's root
      */
     public void union(int p, int q) {
+        // TODO Note: root[q] vs id[q]
         int qroot = root(q);
         id[qroot] = root(p);
     }
