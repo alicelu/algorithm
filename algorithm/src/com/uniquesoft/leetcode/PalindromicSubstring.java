@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.uniquesoft.programcreek;
+package com.uniquesoft.leetcode;
 
 /**
  * @author lusha
