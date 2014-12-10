@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.uniquesoft.algorithm;
+package com.uniquesoft.algorithm.tree;
 
 import java.util.LinkedList;
 import java.util.Queue;
@@ -10,18 +10,7 @@ import java.util.Queue;
  * @author alicelu
  *
  */
-public class TreeSearch {
-    private static final int n = 10;
-    private static final int[][] visit = new int[n][n];
-    private static final int[][] mazeArr = new int[n][n];
-    private static final int[][] stepArr = {{-1,0},{1,0},{0,-1},{0,1}};
-    /**
-     * @param args
-     */
-    public static void main(String[] args) {
-
-    }
-
+public class BreadthFirstSearch {
     private static int bfs(int n) {
         Node node = new Node(0, 0, 0);
         Queue<Node> queue = new LinkedList<Node>();
@@ -56,5 +45,4 @@ public class TreeSearch {
             this.step = step;
         }
     }
-
 }

@@ -10,7 +10,7 @@ import java.util.List;
  * @author alicelu
  *
  */
-public class PreorderSearch {
+public class PreorderTraverse {
 
     private static final List list = new ArrayList();
 

@@ -10,7 +10,7 @@ import java.util.List;
  * @author alicelu
  *
  */
-public class InorderSearch<E> {
+public class InorderTraverse<E> {
 
     private static final List list = new ArrayList();
 

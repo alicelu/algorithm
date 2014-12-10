@@ -11,7 +11,7 @@ import java.util.Stack;
  * @author alicelu
  *
  */
-public class PostorderSearch<E> {
+public class PostorderTraverse<E> {
 
     private static final List list = new ArrayList();
 
