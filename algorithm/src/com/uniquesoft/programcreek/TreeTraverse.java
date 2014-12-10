@@ -3,6 +3,8 @@
  */
 package com.uniquesoft.programcreek;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Stack;
 
 /**
@@ -10,7 +12,7 @@ import java.util.Stack;
  * 
  */
 public class TreeTraverse {
-    private class Node<E> {
+    private static class Node<E> {
         E item;
         Node<E> left;
         Node<E> right;
@@ -22,7 +24,7 @@ public class TreeTraverse {
 
     private static Node<String> root;
 
-    public TreeTraverse() {
+    static {
         root = new Node<String>("A");
 
         Node<String> nodeB = new Node<String>("B");
@@ -38,16 +40,15 @@ public class TreeTraverse {
         nodeE.right = nodeF;
     }
 
-    public static void main(String[] args) {
+    public static List<String> preorderTraverse() {
+        List<String> rlt = new ArrayList<String>();
 
-    }
-
-    public static void preorderTraverse() {
         Stack<Node<String>> stack = new Stack<Node<String>>();
         stack.push(root);
 
         while (!stack.isEmpty()) {
             Node<String> node = stack.pop();
+            rlt.add(node.item);
 
             if (node.right != null) {
                 stack.push(node.right);
@@ -56,6 +57,29 @@ public class TreeTraverse {
                 stack.push(node.left);
             }
         }
-
+        return rlt;
     }
+
+    public static List<String> postorderTraverse() {
+        List<String> rlt = new ArrayList<String>();
+        postorderTraverse(root, rlt);
+        rlt.add(root.item);
+        return rlt;
+    }
+
+    private static void postorderTraverse(Node<String> node, List<String> list) {
+        if (node.left != null) {
+            postorderTraverse(node.left, list);
+            list.add(node.left.item);
+        }
+        if (node.right != null) {
+            postorderTraverse(node.right, list);
+            list.add(node.right.item);
+        }
+    }
+
+    public static List<String> inorderTraverse() {
+        return new ArrayList<String>();
+    }
+
 }
