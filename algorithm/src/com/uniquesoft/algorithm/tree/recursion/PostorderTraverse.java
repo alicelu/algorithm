@@ -16,10 +16,11 @@ import com.uniquesoft.algorithm.tree.Node;
  */
 public class PostorderTraverse {
 
-    private static final List list = new ArrayList();
+    private static List list = new ArrayList();
 
-    public static List postorderSearch(Node node) {
-        search(node);
+    public static List postorderSearch(Node root) {
+        list = new ArrayList();
+        search(root);
         return list;
     }
 

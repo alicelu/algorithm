@@ -5,6 +5,7 @@ package com.uniquesoft.algorithm.tree;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 /**
  * @author alicelu
@@ -12,43 +13,44 @@ import java.util.List;
  */
 public class LevelSpiralTraverse {
 
-    private static final List list = new ArrayList();
+    public static List levelSpiralTraverse(Node root) {
+        List list = new ArrayList();
 
-    private static boolean reverse = true;
+        Stack<Node> curLevel = new Stack<Node>();
+        List<Node> nextLevel = new ArrayList<Node>();
 
-    public static List levelSpiralTraverse(Node node) {
-        if (node != null) {
+        curLevel.push(root);
+
+        boolean left2Right = false;
+        while (!curLevel.isEmpty()) {
+            Node node = curLevel.pop();
             list.add(node.item);
-            traverse(node);
-        }
-        return list;
-    }
 
-    private static void traverse(Node node) {
-        if (node != null) {
-            Node left = node.left;
-            Node right = node.right;
-            if (reverse) {
-                if (right != null) {
-                    list.add(right.item);
+            if (left2Right) {
+                if (node.right != null) {
+                    nextLevel.add(node.right);
                 }
-                if (left != null) {
-                    list.add(left.item);
+                if (node.left != null) {
+                    nextLevel.add(node.left);
                 }
-                traverse(right);
-                traverse(left);
             } else {
-                if (left != null) {
-                    list.add(left.item);
+                if (node.left != null) {
+                    nextLevel.add(node.left);
                 }
-                if (right != null) {
-                    list.add(right.item);
+                if (node.right != null) {
+                    nextLevel.add(node.right);
                 }
-                traverse(left);
-                traverse(right);
             }
-            reverse = !reverse;
+            if (curLevel.isEmpty()) {
+                left2Right = !left2Right;
+                for (Node n : nextLevel) {
+                    curLevel.push(n);
+                }
+                nextLevel = new ArrayList<Node>();
+            }
         }
+
+        return list;
     }
 
 }

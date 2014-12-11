@@ -4,8 +4,8 @@
 package com.uniquesoft.algorithm.tree;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
-import java.util.Stack;
 
 /**
  * @author alicelu
@@ -13,41 +13,26 @@ import java.util.Stack;
  */
 public class LevelTraverse {
 
-    private static final List list = new ArrayList();
+    private static List list = new ArrayList();
 
-    private static final Stack<Node> stack = new Stack<Node>();
+    public static List levelTraverse(Node root) {
+        list = new ArrayList();
 
-    public static List levelTraverse(Node node) {
-        stack.push(node);
-        
-        while (!stack.isEmpty()) {
-            Node left = stack.pop();
-            Node right = stack.pop();
-            
-            if (right.right!= null) {
-                stack.push(right.right);
-            }
-            if (left.left != null) {
-                stack.push(left.left);
-            }
-            
-            if (left.left != null) {
-                stack.push(left.left);
-            }
-            
-            if (left.left != null) {
-                stack.push(left.left);
-            }
-        }
-        
-        if (node != null) {
+        LinkedList<Node> queue = new LinkedList<Node>();
+        queue.add(root);
+
+        while (!queue.isEmpty()) {
+            Node node = queue.poll();
             list.add(node.item);
-            traverse(node);
+            if (node.left != null) {
+                queue.add(node.left);
+            }
+            if (node.right != null) {
+                queue.add(node.right);
+            }
         }
-        return list;
-    }
 
-    private static void traverse(Node node) {
+        return list;
     }
 
 }

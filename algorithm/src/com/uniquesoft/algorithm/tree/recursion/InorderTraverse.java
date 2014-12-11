@@ -14,10 +14,11 @@ import com.uniquesoft.algorithm.tree.Node;
  */
 public class InorderTraverse {
 
-    private static final List list = new ArrayList();
+    private static List list = new ArrayList();
 
-    public static List inorderSearch(Node node) {
-        search(node);
+    public static List inorderSearch(Node root) {
+        list = new ArrayList();
+        search(root);
         return list;
     }
 

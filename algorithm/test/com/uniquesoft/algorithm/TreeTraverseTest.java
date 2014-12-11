@@ -5,8 +5,6 @@ package com.uniquesoft.algorithm;
 
 import static org.junit.Assert.assertEquals;
 
-import java.util.List;
-
 import org.junit.Test;
 
 import com.uniquesoft.algorithm.tree.LevelSpiralTraverse;
@@ -23,10 +21,11 @@ import com.uniquesoft.util.TestUtils;
  */
 public class TreeTraverseTest {
 
-    private Node<String> root;
+    private Node<String> root1;
+    private Node<String> root2;
 
     public TreeTraverseTest() {
-        root = new Node<String>("A");
+        root1 = new Node<String>("A");
 
         Node<String> nodeB = new Node<String>("B");
         Node<String> nodeC = new Node<String>("C");
@@ -39,8 +38,8 @@ public class TreeTraverseTest {
         Node<String> nodeJ = new Node<String>("J");
         Node<String> nodeK = new Node<String>("K");
 
-        root.setLeft(nodeB);
-        root.setRight(nodeC);
+        root1.setLeft(nodeB);
+        root1.setRight(nodeC);
         nodeB.setLeft(nodeD);
         nodeB.setRight(nodeE);
         nodeC.setLeft(nodeF);
@@ -49,35 +48,47 @@ public class TreeTraverseTest {
         nodeD.setRight(nodeI);
         nodeE.setRight(nodeJ);
         nodeG.setLeft(nodeK);
+
+        root2 = new Node<String>("A");
+
+        Node<String> nodeB2 = new Node<String>("B");
+        Node<String> nodeC2 = new Node<String>("C");
+        Node<String> nodeD2 = new Node<String>("D");
+        Node<String> nodeE2 = new Node<String>("E");
+        root2.setRight(nodeB2);
+        nodeB2.setLeft(nodeC2);
+        nodeC2.setRight(nodeD2);
+        nodeD2.setRight(nodeE2);
     }
 
     @Test
     public void testPreorderSearch() {
-        List result = PreorderTraverse.preorderSearch(root);
-        assertEquals("A B D H I E J C F G K", TestUtils.buildStringFromList(result));
+        assertEquals("A B D H I E J C F G K", TestUtils.buildStringFromList(PreorderTraverse.preorderSearch(root1)));
+        assertEquals("A B C D E", TestUtils.buildStringFromList(PreorderTraverse.preorderSearch(root2)));
     }
 
     @Test
     public void testPostorderTraverse() {
-        List result = PostorderTraverse.postorderSearch(root);
-        assertEquals("H I D J E B F K G C A", TestUtils.buildStringFromList(result));
+        assertEquals("H I D J E B F K G C A", TestUtils.buildStringFromList(PostorderTraverse.postorderSearch(root1)));
+        assertEquals("E D C B A", TestUtils.buildStringFromList(PostorderTraverse.postorderSearch(root2)));
     }
 
     @Test
     public void testInorderTraverse() {
-        List result = InorderTraverse.inorderSearch(root);
-        assertEquals("H D I B E J A F C K G", TestUtils.buildStringFromList(result));
+        assertEquals("H D I B E J A F C K G", TestUtils.buildStringFromList(InorderTraverse.inorderSearch(root1)));
+        assertEquals("A C D E B", TestUtils.buildStringFromList(InorderTraverse.inorderSearch(root2)));
     }
 
     @Test
     public void testLevelTraverse() {
-        List result = LevelTraverse.levelTraverse(root);
-        assertEquals("A B C D E F G H I J K", TestUtils.buildStringFromList(result));
+        assertEquals("A B C D E F G H I J K", TestUtils.buildStringFromList(LevelTraverse.levelTraverse(root1)));
+        assertEquals("A B C D E", TestUtils.buildStringFromList(LevelTraverse.levelTraverse(root2)));
     }
 
     @Test
     public void testLevelSpiralTraverse() {
-        List result = LevelSpiralTraverse.levelSpiralTraverse(root);
-        assertEquals("A C B D E F G K J I H", TestUtils.buildStringFromList(result));
+        assertEquals("A C B D E F G K J I H",
+                TestUtils.buildStringFromList(LevelSpiralTraverse.levelSpiralTraverse(root1)));
+        assertEquals("A B C D E", TestUtils.buildStringFromList(LevelSpiralTraverse.levelSpiralTraverse(root2)));
     }
 }

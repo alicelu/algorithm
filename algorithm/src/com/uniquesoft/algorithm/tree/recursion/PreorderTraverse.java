@@ -14,10 +14,11 @@ import com.uniquesoft.algorithm.tree.Node;
  */
 public class PreorderTraverse {
 
-    private static final List list = new ArrayList();
+    private static List list = new ArrayList();
 
-    public static List preorderSearch(Node node) {
-        search(node);
+    public static List preorderSearch(Node root) {
+        list = new ArrayList();
+        search(root);
         return list;
     }
 
