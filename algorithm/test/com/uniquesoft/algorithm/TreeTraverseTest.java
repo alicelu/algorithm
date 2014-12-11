@@ -7,6 +7,8 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
+import com.uniquesoft.algorithm.tree.BreadthFirstSearch;
+import com.uniquesoft.algorithm.tree.DepthFirstSearch;
 import com.uniquesoft.algorithm.tree.LevelSpiralTraverse;
 import com.uniquesoft.algorithm.tree.LevelTraverse;
 import com.uniquesoft.algorithm.tree.Node;
@@ -63,20 +65,20 @@ public class TreeTraverseTest {
 
     @Test
     public void testPreorderSearch() {
-        assertEquals("A B D H I E J C F G K", TestUtils.buildStringFromList(PreorderTraverse.preorderSearch(root1)));
-        assertEquals("A B C D E", TestUtils.buildStringFromList(PreorderTraverse.preorderSearch(root2)));
+        assertEquals("A B D H I E J C F G K", TestUtils.buildStringFromList(PreorderTraverse.preorderTraverse(root1)));
+        assertEquals("A B C D E", TestUtils.buildStringFromList(PreorderTraverse.preorderTraverse(root2)));
     }
 
     @Test
     public void testPostorderTraverse() {
-        assertEquals("H I D J E B F K G C A", TestUtils.buildStringFromList(PostorderTraverse.postorderSearch(root1)));
-        assertEquals("E D C B A", TestUtils.buildStringFromList(PostorderTraverse.postorderSearch(root2)));
+        assertEquals("H I D J E B F K G C A", TestUtils.buildStringFromList(PostorderTraverse.postorderTraverse(root1)));
+        assertEquals("E D C B A", TestUtils.buildStringFromList(PostorderTraverse.postorderTraverse(root2)));
     }
 
     @Test
     public void testInorderTraverse() {
-        assertEquals("H D I B E J A F C K G", TestUtils.buildStringFromList(InorderTraverse.inorderSearch(root1)));
-        assertEquals("A C D E B", TestUtils.buildStringFromList(InorderTraverse.inorderSearch(root2)));
+        assertEquals("H D I B E J A F C K G", TestUtils.buildStringFromList(InorderTraverse.inorderTraverse(root1)));
+        assertEquals("A C D E B", TestUtils.buildStringFromList(InorderTraverse.inorderTraverse(root2)));
     }
 
     @Test
@@ -90,5 +92,17 @@ public class TreeTraverseTest {
         assertEquals("A C B D E F G K J I H",
                 TestUtils.buildStringFromList(LevelSpiralTraverse.levelSpiralTraverse(root1)));
         assertEquals("A B C D E", TestUtils.buildStringFromList(LevelSpiralTraverse.levelSpiralTraverse(root2)));
+    }
+
+    @Test
+    public void testBreadthFirstSearch() {
+        assertEquals("A B C D E F G H I J K", TestUtils.buildStringFromList(BreadthFirstSearch.bfs(root1)));
+        assertEquals("A B C D E", TestUtils.buildStringFromList(BreadthFirstSearch.bfs(root2)));
+    }
+
+    @Test
+    public void testDepthFirstSearch() {
+        assertEquals("A B D H I E J C F G K", TestUtils.buildStringFromList(DepthFirstSearch.dfs(root1)));
+        assertEquals("A B C D E", TestUtils.buildStringFromList(DepthFirstSearch.dfs(root2)));
     }
 }

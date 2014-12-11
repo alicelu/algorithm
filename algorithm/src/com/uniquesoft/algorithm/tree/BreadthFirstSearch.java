@@ -3,46 +3,35 @@
  */
 package com.uniquesoft.algorithm.tree;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
-import java.util.Queue;
+import java.util.List;
 
 /**
  * @author alicelu
+ *         Quite like Level Traverse. Use Queue to implement the function.
  *
  */
 public class BreadthFirstSearch {
-    /*private static int bfs(int n) {
-        Node node = new Node(0, 0, 0);
-        Queue<Node> queue = new LinkedList<Node>();
-        queue.add(node);
+
+    public static List bfs(Node root) {
+        List list = new ArrayList();
+
+        LinkedList<Node> queue = new LinkedList<Node>();
+        queue.add(root);
+
         while (!queue.isEmpty()) {
-            Node newNode = queue.poll();
-            visit[newNode.x][newNode.y] = 1;
-            for (int i = 0; i < 4; i++) {
-                int x = newNode.x + stepArr[i][0];
-                int y = newNode.y + stepArr[i][1];
-                if (x == n - 1 && y == n - 1) {
-                    return newNode.step + 1;
-                }
-                if (x >= 0 && y >= 0 && x < n && y < n && visit[x][y] == 0 && mazeArr[x][y] == 0) {
-                    Node next = new Node(x, y, newNode.step + 1);
-                    queue.add(next);
-                }
+            Node node = queue.poll();
+            list.add(node.item);
+
+            if (node.left != null) {
+                queue.add(node.left);
+            }
+            if (node.right != null) {
+                queue.add(node.right);
             }
         }
-        return -1;
-    }*/
 
-    private static class Node {
-        private int x;
-        private int y;
-        private int step;
-
-        public Node(int x, int y, int step) {
-            super();
-            this.x = x;
-            this.y = y;
-            this.step = step;
-        }
+        return list;
     }
 }

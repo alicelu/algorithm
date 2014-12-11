@@ -16,19 +16,19 @@ public class InorderTraverse {
 
     private static List list = new ArrayList();
 
-    public static List inorderSearch(Node root) {
+    public static List inorderTraverse(Node root) {
         list = new ArrayList();
-        search(root);
+        traverse(root);
         return list;
     }
 
-    private static void search(Node node) {
+    private static void traverse(Node node) {
         if (node.getLeft() != null) {
-            search(node.getLeft());
+            traverse(node.getLeft());
         }
         visit(node);
         if (node.getRight() != null) {
-            search(node.getRight());
+            traverse(node.getRight());
         }
     }
 

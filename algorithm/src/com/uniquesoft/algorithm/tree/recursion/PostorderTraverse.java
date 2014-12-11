@@ -18,18 +18,18 @@ public class PostorderTraverse {
 
     private static List list = new ArrayList();
 
-    public static List postorderSearch(Node root) {
+    public static List postorderTraverse(Node root) {
         list = new ArrayList();
-        search(root);
+        traverse(root);
         return list;
     }
 
-    private static void search(Node node) {
+    private static void traverse(Node node) {
         if (node.getLeft() != null) {
-            search(node.getLeft());
+            traverse(node.getLeft());
         }
         if (node.getRight() != null) {
-            search(node.getRight());
+            traverse(node.getRight());
         }
         visit(node);
     }

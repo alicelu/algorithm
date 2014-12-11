@@ -16,19 +16,19 @@ public class PreorderTraverse {
 
     private static List list = new ArrayList();
 
-    public static List preorderSearch(Node root) {
+    public static List preorderTraverse(Node root) {
         list = new ArrayList();
-        search(root);
+        traverse(root);
         return list;
     }
 
-    private static void search(Node node) {
+    private static void traverse(Node node) {
         visit(node);
         if (node.getLeft() != null) {
-            search(node.getLeft());
+            traverse(node.getLeft());
         }
         if (node.getRight() != null) {
-            search(node.getRight());
+            traverse(node.getRight());
         }
     }
 
