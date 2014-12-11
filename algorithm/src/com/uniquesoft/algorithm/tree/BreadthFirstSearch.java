@@ -11,7 +11,7 @@ import java.util.Queue;
  *
  */
 public class BreadthFirstSearch {
-    private static int bfs(int n) {
+    /*private static int bfs(int n) {
         Node node = new Node(0, 0, 0);
         Queue<Node> queue = new LinkedList<Node>();
         queue.add(node);
@@ -31,7 +31,7 @@ public class BreadthFirstSearch {
             }
         }
         return -1;
-    }
+    }*/
 
     private static class Node {
         private int x;
