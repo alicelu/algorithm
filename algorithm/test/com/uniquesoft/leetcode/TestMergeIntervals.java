@@ -10,8 +10,6 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.uniquesoft.leetcode.MergeIntervals.Interval;
-
 /**
  * @author alicelu
  *
