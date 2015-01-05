@@ -36,7 +36,7 @@ public class EvaluateReversePolishNotation {
         for (String expr : exprArr) {
             // if ((expr != "+") && (expr != "-") && (expr != "*") && (expr !=
             // "/")) {
-            if (operators.contains(expr)) {
+            if (!operators.contains(expr)) {
                 stack.push(expr);
             } else {
                 int operand1 = Integer.valueOf(stack.pop());
